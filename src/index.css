@@ -1,0 +1,137 @@
+/* La police de la maquette, servie par le site lui-même : aucune requête vers
+   Google Fonts, ni à l'affichage ni pour les robots. La maquette, elle, la
+   charge depuis fonts.googleapis.com ; on ne recopie pas cette méthode ici,
+   parce qu'elle enverrait l'adresse IP du visiteur à un tiers alors que la
+   page Confidentialité ne reconnaît qu'un seul destinataire, l'hébergeur. */
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/inter/800.css';
+
+@import 'tailwindcss';
+
+/* LA CHARTE, RECOPIÉE DE LA MAQUETTE (bailora-mockups.css).
+
+   UNE SEULE AMBIANCE POUR TOUT LE SITE, la claire : c'est la seule que la
+   maquette possède (« Warm premium, bordeaux patrimoine »), elle n'a pas de
+   variante sombre. Les jetons portent des noms de RÔLE, jamais de couleur :
+   l'accent s'appelle --color-accent, pas --color-bordeaux. Changer d'ambiance
+   se ferait en changeant ces valeurs, et rien d'autre. */
+@theme {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Les titres de la maquette : un serif SYSTÈME, rien à télécharger. */
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+
+  --color-bg: #faf6f0;
+  --color-bg-deep: #ede7de;
+  --color-surface: #ffffff;
+  --color-surface-2: #f4ede4;
+  --color-line: #e6dccf;
+  --color-line-strong: #d6c9b9;
+  --color-ink: #2b2320;
+  --color-ink-2: #6e625b;
+  --color-ink-3: #9c8f84;
+  --color-accent: #7a2e3a;
+  --color-accent-deep: #5a2029;
+  --color-accent-ink: #ffffff;
+  --color-accent-2: #c46a4a;
+
+  /* Rayons : quatre valeurs, pas une de plus */
+  --radius-pill: 999px;
+  --radius-card: 16px;
+  --radius-control: 12px;
+  --radius-tile: 10px;
+
+  /* Élévations : deux, pas une de plus */
+  --shadow-raised: 0 8px 20px rgba(43, 35, 32, 0.08);
+  --shadow-float: 0 22px 48px rgba(43, 35, 32, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* LE CALAGE DES ICÔNES, repris de la maquette (« garde-fou alignement »).
+   Une icône SVG est un BLOC : elle ne s'assied pas sur la ligne de base et ne
+   rétrécit jamais. Dans un conteneur flex `items-center`, elle est alors
+   centrée avec son texte par construction, et le décalage devient impossible.
+   Inter a l'axe optique équilibré (centre des capitales à 0,500 em du haut de
+   la boîte, contre 0,500 em pour le centre géométrique) : contrairement à
+   Overpass, elle ne demande aucun rattrapage. La valeur de --cale est donc
+   nulle ici, mais la classe existe et s'applique partout où une icône côtoie
+   un libellé : changer de police se fera en changeant ce seul nombre. */
+:where(svg) {
+  display: block;
+  flex: 0 0 auto;
+}
+.cale {
+  --cale: 0em;
+  padding-top: var(--cale);
+}
+
+/* LE CADRE DU TÉLÉPHONE, DESSINÉ EN CSS. Mêmes mesures que la maquette
+   (châssis 330 × 730, marge 13, rayon 50, écran 304 × 704 arrondi à 39) :
+   le châssis et ses arrondis sont vectoriels, donc nets à toute densité
+   d'écran ; seul l'ÉCRAN, capturé à ×3, est une image. La largeur se règle
+   par --phone-w, tout le reste en découle. Le dégradé du châssis est celui
+   de la maquette, au degré près. */
+.phone {
+  --phone-w: 300px;
+  position: relative;
+  width: var(--phone-w);
+  aspect-ratio: 330 / 730;
+  padding: calc(var(--phone-w) * 13 / 330);
+  border-radius: calc(var(--phone-w) * 50 / 330);
+  background: linear-gradient(150deg, #3a2f2b, #16100e 72%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.09), var(--shadow-float);
+}
+.phone > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(var(--phone-w) * 39 / 330);
+}
+/* Deux tailles, nommées par leur emploi. Dans la galerie, le téléphone prend
+   toute la largeur de sa carte (unité de conteneur : le <li> est un conteneur,
+   236 px qui défilent sur téléphone, une colonne de grille au-delà). */
+.phone-hero {
+  --phone-w: min(300px, 72vw);
+}
+.phone-galerie {
+  --phone-w: 100cqw;
+}
+
+/* La promesse s'écrit sur deux lignes, comme sur l'écran d'accueil, et en
+   serif : c'est la typographie des titres dans toute l'application. */
+.promesse em {
+  font-style: normal;
+  display: block;
+}
+
+/* Un repère « à compléter » visible sur les pages légales, jamais silencieux. */
+mark.a-completer {
+  background: #f7e3b8;
+  color: #4a3410;
+  padding: 0 0.3em;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* LA SIGNATURE VISUELLE de la maquette : le dégradé bordeaux vers terracotta.
+   RÉSERVÉ, comme dans la maquette, au hero et à l'action principale. Jamais
+   sur une petite surface, jamais sur un fond de carte. Ce n'est pas un jeton
+   de couleur : @theme ne connaît que des couleurs, pas des dégradés. */
+.fond-marque {
+  background: linear-gradient(135deg, #5a2029, #7a2e3a 55%, #b05a3e 135%);
+}

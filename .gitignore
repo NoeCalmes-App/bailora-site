@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.env
+npm-debug.log*
+.vite
+
+# Ce que les sessions Cowork ne peuvent pas effacer sur le Mac : rien de ce qui
+# s'y trouve ne doit entrer dans un commit.
+_to_delete/

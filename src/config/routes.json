@@ -1,0 +1,8 @@
+[
+  { "path": "/", "titre": "Accueil", "priorite": "1.0" },
+  { "path": "/mentions-legales", "titre": "Mentions légales", "priorite": "0.3" },
+  { "path": "/confidentialite", "titre": "Politique de confidentialité", "priorite": "0.3" },
+  { "path": "/cgu", "titre": "Conditions générales d'utilisation", "priorite": "0.3" },
+  { "path": "/support", "titre": "Support", "priorite": "0.5" },
+  { "path": "/supprimer-compte", "titre": "Supprimer mon compte", "priorite": "0.3" }
+]

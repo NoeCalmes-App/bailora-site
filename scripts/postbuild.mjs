@@ -35,11 +35,15 @@ for (const { path } of routes) {
   copyFileSync(coquille, join(dossier, 'index.html'))
 }
 
+// LA BARRE FINALE COMPTE. Chaque page vit dans son dossier, donc GitHub Pages
+// repond 301 de /cgu vers /cgu/. Un sitemap qui annonce /cgu envoie les robots
+// sur une redirection, et sur une adresse qui n'est pas celle du canonique de
+// la page. On ecrit donc l'adresse reellement servie.
 const jour = new Date().toISOString().slice(0, 10)
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes.map(({ path, priorite }) => `  <url>
-    <loc>${origine}${path === '/' ? '/' : path}</loc>
+    <loc>${origine}${path === '/' ? '/' : `${path}/`}</loc>
     <lastmod>${jour}</lastmod>
     <priority>${priorite}</priority>
   </url>`).join('\n')}

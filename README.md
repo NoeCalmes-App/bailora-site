@@ -70,7 +70,15 @@ Le site sert aussi de site officiel de l'entreprise pour l'inscription au progra
    | A     | *(vide)*     | `185.199.109.153` |
    | A     | *(vide)*     | `185.199.110.153` |
    | A     | *(vide)*     | `185.199.111.153` |
-   | CNAME | `www`        | `noecalmes-app.github.io.` |
+   | A     | `www`        | les quatre mêmes adresses |
 
 3. **Boîte mail** sur le domaine : `contact@bailora-app.fr`. C'est le client qui la crée ; son guide lui fait porter le nom de sa boîte plutôt que « contact ». L'adresse qu'il renverra peut donc différer : la coller dans `contact.email` de `src/config/site.ts` la change partout.
 4. Propagation DNS : 1 à 2 h. Vérifier `https://bailora-app.fr` et `https://www.bailora-app.fr`.
+
+⚠️ **Le domaine personnalisé ne se lit PAS dans `public/CNAME`** quand le déploiement passe par GitHub Actions, contrairement au déploiement par branche. Il faut le déclarer une fois, dans Settings → Pages → Custom domain, ou par l'API :
+
+```bash
+echo '{"cname":"bailora-app.fr"}' | gh api repos/NoeCalmes-App/bailora-site/pages -X PUT --input -
+```
+
+Envoyer `https_enforced` dans le même appel le fait échouer avec « The certificate does not exist yet » : le certificat n'existe pas encore au moment où on nomme le domaine. Poser le domaine seul, attendre que `https_certificate.state` passe à `approved` (deux à trois minutes), puis renvoyer le même appel avec `"https_enforced": true`.

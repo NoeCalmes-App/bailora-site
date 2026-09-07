@@ -9,8 +9,9 @@ import etatDesLieux from '../assets/screens/etat-des-lieux.webp'
  * valeur : une seule question posée, une décision par jour. Puis le suivi des
  * loyers, l'écran le plus ouvert du mois, et l'état des lieux signé.
  *
- * LES TROIS FONT LA MÊME HAUTEUR D'ÉCRAN, 704 px, ce qui aligne la rangée au
- * pixel. C'est le tableau de bord qui la fixe, une fois retirée sa ligne
+ * LES TROIS FONT LE MÊME ÉCRAN, 326 × 705, ce qui aligne la rangée au pixel
+ * ET donne exactement le rapport d'un iPhone (voir .phone dans index.css).
+ * C'est le tableau de bord qui fixe la hauteur, une fois retirée sa ligne
  * « Assurance à renouveler » ; les deux autres écrans ont moins de contenu et
  * gagnent donc du vide en bas, ce qu'afficherait un téléphone plus haut. Rien
  * n'est coupé, rien n'est déformé.

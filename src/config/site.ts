@@ -14,11 +14,16 @@ export const app = {
   nom: 'Bailora',
   /** La promesse, telle qu'elle est écrite sur l'écran d'accueil de l'app. */
   accroche: ['Vos SCI,', 'enfin simples.'],
+  /**
+   * Le sous-titre du hero. COURT, ET SANS JARGON : « SCI » et « baux » ne
+   * parlent qu'à ceux qui les emploient déjà, alors que cette phrase est la
+   * plus lue de tout le site. Elle dit d'abord le problème, puis qui le règle.
+   */
   description:
-    "Bailora regroupe vos SCI, vos biens, vos locataires et vos baux sur votre téléphone. Les loyers se suivent, les quittances et les courriers se produisent depuis vos données, et l'état des lieux se signe du doigt.",
+    "Louer un logement, c'est suivre les loyers, envoyer les quittances et garder chaque papier. Bailora fait tout ça depuis votre téléphone.",
   /** Une phrase pour les moteurs de recherche et les réseaux (moins de 160 caractères). */
   metaDescription:
-    "Bailora, l'application qui réunit vos SCI, vos biens et vos locataires sur votre téléphone : loyers suivis, quittances produites, états des lieux signés.",
+    "Bailora suit vos loyers, prépare vos quittances et vos courriers et garde vos états des lieux. Toute la gestion de vos locations, sur votre téléphone.",
   plateformes: 'iOS et Android',
 } as const
 

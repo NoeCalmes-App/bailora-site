@@ -53,6 +53,17 @@ export function Section({ titre, children }: { titre: string; children: ReactNod
   )
 }
 
+/** Une marche à suivre : des étapes numérotées, dans l'ordre des écrans. */
+export function Etapes({ items }: { items: ReactNode[] }) {
+  return (
+    <ol className="list-decimal space-y-1.5 pl-5">
+      {items.map((it, i) => (
+        <li key={i}>{it}</li>
+      ))}
+    </ol>
+  )
+}
+
 export function Liste({ items }: { items: ReactNode[] }) {
   return (
     <ul className="list-disc space-y-1.5 pl-5">

@@ -13,17 +13,11 @@ npm run lint
 npm run typecheck
 ```
 
-## ⚠️ Ce qui manque avant de publier
+## Les mentions légales
 
-Trois informations légales sont encore vides dans `src/config/site.ts`, et le site les signale **en jaune** sur la page Mentions légales et dans le pied de page :
+L'éditeur est **BAILORA, SARL au capital de 1 000 €** (SIREN 131 157 885, RCS Paris, siège au 66 avenue des Champs-Élysées, 75008 Paris), gérant Sofiane Moussaoui. Relevé au registre le 19 octobre 2026 et rangé dans `src/config/site.ts`, avec le SIRET et le numéro de TVA.
 
-- `editeur.formeJuridique` (« Entrepreneur individuel », « SASU »…)
-- `editeur.siren` et `editeur.siret`
-- `editeur.adresse` (l'adresse du siège au registre)
-
-Si l'éditeur est une **société** et non un entrepreneur individuel, trois mentions de plus deviennent obligatoires et apparaissent alors toutes seules : `capitalSocial`, `villeRcs`, `tvaIntracommunautaire`. La règle vit dans `src/lib/editeur.ts`, elle n'est pas recopiée dans les pages.
-
-Tant qu'un repère jaune subsiste, **le site n'est pas publiable** : une page de mentions légales trouée dit à Apple qu'il n'y a rien derrière ce domaine, et c'est exactement le motif de refus qu'on cherche à éviter. Ces informations se trouvent sur Pappers ou societe.com à partir du nom du représentant. Les coller dans `site.ts` éteint les repères.
+Une valeur vidée un jour s'affiche **en jaune** sur la page Mentions légales et dans le pied de page. Pour une société, le capital, la ville du RCS et le numéro de TVA sont obligatoires en plus du SIREN, du SIRET et de l'adresse : la règle vit dans `src/lib/editeur.ts`, elle n'est pas recopiée dans les pages. Tant qu'un repère jaune subsiste, **le site n'est pas publiable** : une page de mentions légales trouée dit à Apple qu'il n'y a rien derrière ce domaine.
 
 ## Où changer quoi
 

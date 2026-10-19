@@ -52,12 +52,12 @@ export const stores: { appStore: string; googlePlay: string } = {
  * légales affichent, et c'est ce qu'Apple vérifie pour associer ce domaine à
  * l'entité qui publie l'app : le nom au registre, jamais le nom commercial.
  *
- * ⚠️ TROIS VALEURS MANQUENT ENCORE, et le site n'est pas publiable sans elles.
- * Nowork ne les a pas (la fiche client n'a ni société, ni SIRET, ni adresse).
- * Les remplir ici suffit : la page Mentions légales et le pied de page les
- * affichent, et les avertissements jaunes disparaissent tout seuls.
+ * RELEVÉ AU REGISTRE le 19 octobre 2026 (societe.com, source RNE) : BAILORA,
+ * SARL créée le 14 octobre 2026, gérant Sofiane Moussaoui. Une valeur qui
+ * manque s'affiche en jaune sur la page Mentions légales et dans le pied de
+ * page : le site n'est pas publiable tant qu'il en reste une.
  *
- * Où les trouver : Pappers ou societe.com, à partir du nom du représentant.
+ * Où les trouver : Pappers ou societe.com, à partir du nom de la société.
  *   formeJuridique : « Entrepreneur individuel », « SASU », « SARL »…
  *   siren / siret  : 9 et 14 chiffres.
  *   adresse        : l'adresse du siège, telle qu'elle est au registre.
@@ -80,25 +80,27 @@ interface Editeur {
   miseAJourLegale: string
 }
 
-// Pas de `as const` ici, volontairement : plusieurs champs sont encore vides,
-// et un littéral figé les typerait à la chaîne vide. Le site cesserait alors
-// de compiler dès qu'il teste `if (editeur.siren)`, exactement le test qui
-// fait apparaître les repères jaunes.
+// Pas de `as const` ici, volontairement : un champ vidé un jour serait typé à
+// la chaîne vide, et le site cesserait de compiler dès qu'il teste
+// `if (editeur.siren)`, exactement le test qui fait apparaître les repères
+// jaunes.
 export const editeur: Editeur = {
-  nomLegal: 'Sofiane Moussaoui',
-  formeJuridique: '',
+  /** La dénomination au registre. */
+  nomLegal: 'BAILORA',
+  /** Écrite en toutes lettres : les pages l'affichent en minuscules. */
+  formeJuridique: 'Société à responsabilité limitée',
   nomCommercial: 'Bailora',
-  siren: '',
-  siret: '',
-  adresse: '',
+  siren: '131 157 885',
+  siret: '131 157 885 00016',
+  adresse: '66 avenue des Champs-Élysées, 75008 Paris',
   /** Société uniquement. Laisser vide pour un entrepreneur individuel. */
-  capitalSocial: '',
-  villeRcs: '',
-  tvaIntracommunautaire: '',
+  capitalSocial: '1 000 €',
+  villeRcs: 'Paris',
+  tvaIntracommunautaire: 'FR54131157885',
   telephone: '+33 6 52 69 03 02',
-  directeurPublication: 'Sofiane Moussaoui',
+  directeurPublication: 'Sofiane Moussaoui, gérant',
   /** Date de la dernière mise à jour des pages légales (affichée). */
-  miseAJourLegale: '6 septembre 2026',
+  miseAJourLegale: '19 octobre 2026',
 }
 
 export const hebergeur = {

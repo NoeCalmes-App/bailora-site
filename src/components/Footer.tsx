@@ -52,6 +52,11 @@ export function Footer() {
           <p className="mt-1.5 text-ink-3">
             © {annee} {editeur.nomLegal}. Tous droits réservés.
           </p>
+          <p className="mt-1.5 text-ink-3">
+            <a href="https://noecalmes.fr" target="_blank" rel="noopener" className="underline-offset-2 transition-colors hover:text-ink-2 hover:underline">
+              Application et site web développés par Noé Calmes
+            </a>
+          </p>
         </div>
       </div>
     </footer>

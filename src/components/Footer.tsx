@@ -4,6 +4,7 @@ import { Logotype } from './Mark'
 import { ACompleter } from './LegalLayout'
 
 const liens = [
+  { label: 'La société', path: '/societe' },
   { label: 'Mentions légales', path: '/mentions-legales' },
   { label: 'Confidentialité', path: '/confidentialite' },
   { label: 'CGU', path: '/cgu' },
@@ -42,7 +43,11 @@ export function Footer() {
 
         <div className="mt-10 border-t border-line pt-6 text-[13px] leading-relaxed text-ink-2">
           <p>
-            {app.nom} est une application éditée par {editeur.nomLegal},{' '}
+            {app.nom} est une application éditée par{' '}
+            <Link to="/societe" className="font-semibold text-ink underline-offset-2 hover:underline">
+              {editeur.nomLegal}
+            </Link>
+            ,{' '}
             {editeur.formeJuridique ? editeur.formeJuridique.toLowerCase() : <ACompleter>forme juridique</ACompleter>}, SIREN{' '}
             {editeur.siren || <ACompleter>SIREN</ACompleter>}. Contact :{' '}
             <a href={`mailto:${contact.email}`} className="font-semibold text-ink underline-offset-2 hover:underline">

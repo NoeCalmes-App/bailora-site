@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Mail } from 'lucide-react'
 import { LegalLayout, Section, Liste } from '../components/LegalLayout'
-import { app, contact } from '../config/site'
+import { app, contact, editeur } from '../config/site'
 
 /**
  * La page de support : celle que l'App Store et Google Play afficheront en
@@ -37,6 +37,16 @@ export default function Support() {
           {contact.email}
         </a>
       </div>
+
+      <Section titre="Qui vous répond">
+        <p>
+          {app.nom} est éditée et assistée par <Link to="/societe">{editeur.nomLegal}</Link>,{' '}
+          {editeur.formeJuridique.toLowerCase()} immatriculée au RCS de {editeur.villeRcs} (SIREN {editeur.siren}).
+          Vous pouvez aussi nous joindre par téléphone au{' '}
+          <a href={`tel:${editeur.telephone.replace(/\s/g, '')}`}>{editeur.telephone}</a> ou par courrier :{' '}
+          {editeur.nomLegal}, {editeur.adresse}.
+        </p>
+      </Section>
 
       <Section titre="Questions fréquentes">
         <Liste

@@ -4,6 +4,7 @@ import MentionsLegales from './pages/MentionsLegales'
 import Confidentialite from './pages/Confidentialite'
 import Cgu from './pages/Cgu'
 import Support from './pages/Support'
+import Societe from './pages/Societe'
 import SupprimerCompte from './pages/SupprimerCompte'
 import NotFound from './pages/NotFound'
 
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/mentions-legales" element={<MentionsLegales />} />
         <Route path="/confidentialite" element={<Confidentialite />} />
         <Route path="/cgu" element={<Cgu />} />
+        <Route path="/societe" element={<Societe />} />
         <Route path="/support" element={<Support />} />
         <Route path="/supprimer-compte" element={<SupprimerCompte />} />
         <Route path="*" element={<NotFound />} />

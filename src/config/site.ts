@@ -76,6 +76,9 @@ interface Editeur {
   villeRcs: string
   tvaIntracommunautaire: string
   telephone: string
+  /** L'activité principale au registre (code NAF et son libellé). */
+  activite: string
+  gerant: string
   directeurPublication: string
   miseAJourLegale: string
 }
@@ -98,6 +101,8 @@ export const editeur: Editeur = {
   villeRcs: 'Paris',
   tvaIntracommunautaire: 'FR54131157885',
   telephone: '+33 6 52 69 03 02',
+  activite: 'édition de logiciels applicatifs (code NAF 58.29C)',
+  gerant: 'Sofiane Moussaoui',
   directeurPublication: 'Sofiane Moussaoui, gérant',
   /** Date de la dernière mise à jour des pages légales (affichée). */
   miseAJourLegale: '19 octobre 2026',

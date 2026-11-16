@@ -5,6 +5,7 @@ import { app } from '../config/site'
 import { Logotype } from './Mark'
 
 const liens = [
+  { label: 'La société', path: '/societe' },
   { label: 'Support', path: '/support' },
   { label: 'Confidentialité', path: '/confidentialite' },
   { label: 'CGU', path: '/cgu' },
